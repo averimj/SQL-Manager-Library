@@ -27,22 +27,25 @@ app.use('/books', books);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-  console.log('404 error handler called')
-  next(createError(404));
-  res.status(404).render('page-not-found', {error});
+  const error = new Error();
+  error.status === 404;
+  error.message = 'Houston we have a 404 problem';
+
+  // got from error handle video with the exception of { error }
+  res.status(404).render('page-not-found', { error });
 });
 
 // error handler
 app.use((err, req, res, next) => {
-  if (err) {
-    console.log('Global error handler called', err);
-  }
 
+  // got from error handle video
   if (err.status === 404) {
-    res.status(404).render('page-not-found', {err});
+    res.status(404).render('page-not-found', { error });
   } else {
-    err.message = err.message || 'Looks like something went wrong on the server!'
-    res.status(err.status || 500).render('error', {err});
+    console.log(err.message);
+    console.log(err.status);
+    err.message = err.message || 'Houston, we have a problem with the server!'
+    res.status(err.status || 500).render('error', { err });
   }
 });
 
