@@ -32,4 +32,14 @@ router.post('/new', asyncHandler(async(req, res) => {
   res.redirect('/books');
 }));
 
+/* GET a single book */
+router.get('/:id', asyncHandler(async(req, res) => {
+  const book = await Book.findByPk(req.params.id);
+  if (book) {
+    res.render('update_book', { book, title: book.title})
+  } else {
+    res.status(404).render('page-not-found');
+  }
+}));
+
 module.exports = router;
