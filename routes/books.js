@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+// const { sequelize, Book } = require('../models');
 const Book = require('../models').Book;
 
 // Handler function to wrap each route
@@ -17,7 +18,7 @@ function asyncHandler(cb){
 /* GET books listing. */
 router.get('/', asyncHandler(async(req, res, next) => {
   const books = await Book.findAll();
-  res.render('books/index', {books, title: 'I got this!'});
+  res.render('index', {books, title: 'I got this!'});
 }));
 
 
