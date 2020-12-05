@@ -26,5 +26,10 @@ router.get('/new', (req,res) => {
   res.render('new_book', { book: {}, title: 'New Book' });
 });
 
+/* POST a newly created book */
+router.post('/new', asyncHandler(async(req, res) => {
+  const book = await Book.create(req.body);
+  res.redirect('/books');
+}));
 
 module.exports = router;
