@@ -1,8 +1,32 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+
 }
 
 a {
-  color: #00B7FF;
+  color: blue;
+}
+
+h1 {
+  color: purple;
+  text-align: center;
+  font: 40px "Copperplate", Georgia, Arial, sans-serif;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: purple;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 10px;
+}
+
+label {
+	display: block;
+	margin-bottom: 8px;
 }

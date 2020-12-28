@@ -2,25 +2,30 @@ extends layout
 
 block content
 
-    h1 New Book
-    form
-      h2.error Oooops!
-      ul.error
-        li Author is required
-        li Title is required
+    h1 Update Book
+    form(action=`/books/${book.id}`, method='post')
+      if(errors)
+        h2.errors Oooops! Looks like an error occured!
+        ul.errors
+            each error in errors
+                li
+                    =error.message
       p
         label(for='title') Title
-        input#title(name='title', type='text')
+        input#title(name='title', type='text', value=`${book.title}`)
       p
         label(for='author') Author
-        input#author(name='author', type='text')
+        input#author(name='author', type='text', value=`${book.author}`)
       p
         label(for='genre') Genre
-        input#genre(name='genre', type='text')
+        input#genre(name='genre', type='text', value=`${book.genre}`)
       p
         label(for='year') Year
-        input#year(name='year', type='text')
+        input#year(name='year', type='text', value=`${book.year}`)
       p
-        input(type='submit', value='Create New Book')
+        input(type='submit', value='Update Book')
+    form(action=`/books/${book.id}/delete`, method='post', onsubmit="return confirm('Are you sure you want to delete this book? This action cannot be undone!')")
       p
         a.button(href='/') Cancel
+      p
+        input(class="button", type='submit', value='Delete Book')
