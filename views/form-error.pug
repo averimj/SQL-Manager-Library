@@ -2,8 +2,8 @@ extends layout
 
 block content
 
-    h1 Update Book
-    form(action=`/books/${book.id}`, method='post')
+    h1 Error
+    form(action='/books/new', method='post')
       if(errors)
         h2.errors Oooops! Looks like an error occured!
         ul.errors
@@ -23,9 +23,6 @@ block content
         label(for='year') Year
         input#year(name='year', type='text', value=`${book.year}`)
       p
-        input(type='submit', value='Update Book')
-    form(action=`/books/${book.id}/delete`, method='post', onsubmit="return confirm('Are you sure you want to delete this book? This action cannot be undone!')")
+        input(type='submit', value='Create New Book')
       p
         a.button(href='/') Cancel
-      p
-        input(class="button", type='submit', value='Delete Book')
