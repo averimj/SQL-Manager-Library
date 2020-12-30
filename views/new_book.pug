@@ -3,7 +3,10 @@ extends layout
 block content
 
     h1 New Book
-    form
+
+    if errors
+      include form-error
+
     form(action='/books/new', method='post')
       p
         label(for='title') Title
