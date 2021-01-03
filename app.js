@@ -39,11 +39,9 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
 
   // got from error handle video
-  if (err.status === 404) {
+  if (error.status === 404) {
     res.status(404).render('page-not-found', { error });
   } else {
-    console.log(err.message);
-    console.log(err.status);
     err.message = err.message || 'Houston, we have a problem with the server!'
     res.status(err.status || 500).render('error', { err });
   }
