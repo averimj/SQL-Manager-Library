@@ -4,12 +4,11 @@ block content
 
     h1 Error
     form(action='/books/new', method='post')
-      if(errors)
-        h2.errors Oooops! Looks like an error occured!
-        ul.errors
-            each error in errors
-                li
-                    =error.message
+      h2.errors Oooops! Looks like an error occured!
+      ul.errors
+          each error in errors
+              li
+                  =error.message
       p
         label(for='title') Title
         input#title(name='title', type='text', value=`${book.title}`)
