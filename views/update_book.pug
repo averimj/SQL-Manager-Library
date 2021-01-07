@@ -3,10 +3,13 @@ extends layout
 block content
 
     h1 Update Book
-
     if errors
-      include form-error
-      
+      h2.errors Oooops! Looks like an error occured!
+      ul.errors
+          each error in errors
+              li
+                  =error.message
+
     form(action=`/books/${book.id}`, method='post')
       p
         label(for='title') Title
