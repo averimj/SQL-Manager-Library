@@ -43,13 +43,15 @@ router.post('/new', asyncHandler(async (req, res) => {
 }));
 
 /* UPDATE a single book */
-router.get('/:id', asyncHandler(async(req, res) => {
+router.get('/:id', asyncHandler(async(req, res, next) => {
   const book = await Book.findByPk(req.params.id);
-  if (book) {
-    res.render('update_book', { book, title: book.title})
-  } else {
-    res.status(404).render('page-not-found');
-  }
+    if(book) {
+      res.render('update_book', { book, title: book.title})
+    } else {
+      const error = new Error();
+      error.status = 404;
+      throw error;
+    }
 }));
 
 /* POST an updated book. */
